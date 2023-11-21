@@ -97,13 +97,3 @@ void	custom_sort(t_list *content)
 			(ft_push(content, B), write_op(content, PA, NONE));
 	}
 }
-
-// printf("index cheapest:\t\t%d\n", content->index_cheapest);
-// printf("value cheapest:\t\t%d\n", 
-//content->stack[A][content->index_cheapest]);
-// printf("index target:\t\t%d\n", content->target);
-// printf("cost for cheapest:\t%d\n", content->cost);
-// int max = content->stack[STACK_B][ft_max_ind(content, STACK_B)];
-	// int index = ft_max_ind(content, STACK_B);
-	// while (content->stack[STACK_B][0] != max)
-	//  	(rotate_cor_dir(content, STACK_B, index));

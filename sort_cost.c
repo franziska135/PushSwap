@@ -93,37 +93,3 @@ int	cost_b_smaller(t_list *content, int index_a, int down, int up)
 	else
 		return (-1);
 }
-
-/*returns the index of the target element in a custom stack*/
-// int	calculate_cost(t_list *content, int index_a)
-// {
-// 	int	target_index;
-// 	int	move_down;
-// 	int	move_up;
-
-// 	target_index = target_decending(content, 
-// content->stack[STACK_A][index_a]);
-// 	move_up = compare(index_a, target_index, BIGGEST);
-// 	move_down = content->size[STACK_A] - index_a;
-// 	move_down = compare(move_down, content->size[STACK_B] - 
-// target_index, BIGGEST);
-// 	// move_up = index_a;
-// 	// move_down = content->size[STACK_A] - index_a;
-// 	if (index_a <= target_index)
-// 	{
-// 		if (content->size[STACK_B] - target_index < target_index - 
-// index_a)
-// 			move_up += content->size[STACK_B] - target_index;
-// 		else
-// 			move_up = target_index;
-// 	}
-// 	else if (move_down < content->size[STACK_B] - target_index)
-// 	{
-// 		if (content->size[STACK_B] - target_index - 
-// (content->size[STACK_A] - index_a) > target_index)
-// 			move_down += target_index;
-// 		else
-// 			move_down = content->size[STACK_B] - target_index;
-// 	}
-// 	return (compare(move_up, move_down, SMALLEST));
-// }

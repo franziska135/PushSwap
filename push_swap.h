@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <limits.h>
 
 # define A 0
 # define B 1
@@ -119,7 +120,7 @@ void		write_op(t_list *content, int operation, int stack);
 
 // libft functions
 int			ft_atoi(const char *str);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strncmp(char *s1, const char *s2, size_t n);
 char		*ft_itoa(int n);
 char		*ft_write_str(char *converted, int length, long int number, int n);
 int			ft_length(long int n);

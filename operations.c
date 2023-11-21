@@ -16,23 +16,29 @@ void	ft_swap(t_list *content, int stack)
 {
 	int	temp;
 
-	temp = content->stack[stack][0];
-	content->stack[stack][0] = content->stack[stack][1];
-	content->stack[stack][1] = temp;
+	if (content->stack[stack] != 0)
+	{
+		temp = content->stack[stack][0];
+		content->stack[stack][0] = content->stack[stack][1];
+		content->stack[stack][1] = temp;
+	}
 }
 
 void	ft_push(t_list *content, int from)
 {
 	int	to;
 
-	to = 1 - from;
-	ft_rotate(content, to, DOWN);
-	content->size[to]++;
-	content->stack[to][content->size[to] - 1] = content->stack[to][0];
-	content->stack[to][0] = content->stack[from][0];
-	content->stack[from][0] = 0;
-	ft_rotate(content, from, UP);
-	content->size[from]--;
+	if (content->size[from] != 0)
+	{
+		to = 1 - from;
+		ft_rotate(content, to, DOWN);
+		content->size[to]++;
+		content->stack[to][content->size[to] - 1] = content->stack[to][0];
+		content->stack[to][0] = content->stack[from][0];
+		content->stack[from][0] = 0;
+		ft_rotate(content, from, UP);
+		content->size[from]--;
+	}
 }
 
 void	ft_rotate(t_list *content, int stack, int direction)
@@ -40,7 +46,7 @@ void	ft_rotate(t_list *content, int stack, int direction)
 	int	tmp;
 	int	i;
 
-	if (direction == UP && content->size[stack] != 0)
+	if (direction == UP && content->size[stack] > 1)
 	{
 		i = 1;
 		tmp = content->stack[stack][0];
@@ -51,11 +57,10 @@ void	ft_rotate(t_list *content, int stack, int direction)
 		}
 		content->stack[stack][content->size[stack] - 1] = tmp;
 	}
-	if (direction == DOWN && content->size[stack] != 0)
+	if (direction == DOWN && content->size[stack] > 1)
 	{
-		i = content->size[stack];
-		if (content->size[stack] != 0)
-			tmp = content->stack[stack][content->size[stack] - 1];
+		i = content->size[stack] - 1;
+		tmp = content->stack[stack][content->size[stack] - 1];
 		while (i > 0)
 		{
 			content->stack[stack][i] = content->stack[stack][i - 1];

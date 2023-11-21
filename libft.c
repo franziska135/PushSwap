@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	nbr;
-	int	sign;
+	int			i;
+	int			nbr;
+	int			sign;
 
 	i = 0;
 	nbr = 0;
@@ -39,11 +39,15 @@ int	ft_atoi(const char *str)
 	return (nbr * sign);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(char *s1, const char *s2, size_t n)
 {
 	unsigned int	i;
 
 	i = 0;
+	while (*s1 == '0')
+		s1++;
+	while (*s2 == '0')
+		s2++;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && i < n)
 		i++;
 	if (i == n || (s1[i] == '\0' && s2[i] == '\0'))
@@ -110,72 +114,3 @@ char	*ft_itoa(int n)
 	ft_write_str (converted, length, number, n);
 	return (converted);
 }
-
-// char	*ft_strdup(const char *s)
-// {
-// 	int		i;
-// 	char	*p_newstr;
-
-// 	i = 0;
-// 	while (s[i] != '\0')
-// 		i++;
-// 	p_newstr = (char *)malloc((i + 1) * sizeof(char));
-// 	if (p_newstr == 0)
-// 		return (0);
-// 	i = 0;
-// 	while (s[i] != '\0')
-// 	{
-// 		p_newstr[i] = s[i];
-// 		i++;
-// 	}
-// 	p_newstr[i] = '\0';
-// 	return (p_newstr);
-// }
-
-// size_t	ft_strlen(const char *s)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (s[i] != '\0')
-// 		i++;
-// 	return (i);
-// }s
-// char	*ft_substr(char const *s, unsigned int start, size_t len)
-// {
-// 	unsigned int	i;
-// 	char			*p_string;
-// 	size_t			length;
-// 	i = 0;
-// 	length = 0;
-// 	if (!s)
-// 		return (NULL);
-// 	if ((unsigned int)ft_strlen(s) < start)
-// 		return (ft_strdup(""));
-// 	length = ft_strlen(s + start);
-// 	if (len < length)
-// 		length = len;
-// 	p_string = (char *)malloc(sizeof(char) * (length + 1));
-// 	if (p_string == NULL)
-// 		return (NULL);
-// 	while (i < length && s[start + i] != '\0')
-// 	{
-// 		p_string[i] = s[start + i];
-// 		i++;
-// 	}
-// 	p_string[i] = '\0';
-// 	return (p_string);
-// }
-
-// char	*ft_strchr(const char *s, int c)
-// {
-// 	while (*s != '\0')
-// 	{
-// 		if ((unsigned char)*s == (unsigned char)c)
-// 			return ((char *)s);
-// 		s++;
-// 	}
-// 	if ((char)c == '\0')
-// 		return ((char *)s);
-// 	return (NULL);
-// }

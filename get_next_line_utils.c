@@ -50,7 +50,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	k = 0;
 	str3 = (char *)malloc(i + j + 1);
 	if (str3 == NULL)
-		return (free(s2), NULL);
+		return (free(s1), NULL);
 	while (k < i)
 	{
 		str3[k] = s1[k];

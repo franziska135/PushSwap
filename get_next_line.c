@@ -89,20 +89,23 @@ char	*ft_read_from_file_to_buffer(int fd, char **line_buffer)
 		new_string[byte] = '\0';
 		*line_buffer = ft_strjoin(*line_buffer, new_string);
 		if (!*line_buffer)
-			return (NULL);
+			return (free(new_string), NULL);
 	}
 	return (free(new_string), *line_buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*line_buffer = NULL;
+	char		*line_buffer;
 	char		*newline;
 	char		*tmp;
 
+	line_buffer = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	tmp = ft_read_from_file_to_buffer(fd, &line_buffer);
+	if (!tmp)
+		return (free(line_buffer), NULL);
 	if (tmp)
 		line_buffer = tmp;
 	else
@@ -113,6 +116,6 @@ char	*get_next_line(int fd)
 	if (!line_buffer)
 		return (free(line_buffer), line_buffer = NULL, NULL);
 	newline = ft_read_from_buffer_newline(&line_buffer);
-	line_buffer = ft_clean_buffer(&line_buffer);
+	free(line_buffer);
 	return (newline);
 }

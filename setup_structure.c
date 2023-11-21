@@ -60,17 +60,15 @@ int	just_int(int argc, char **argv)
 {
 	char	*number_str;
 	int		i;
-	int		j;
 
 	i = 1;
-	j = 0;
 	while (i < argc)
 	{
 		number_str = ft_itoa(ft_atoi(argv[i]));
 		if (!number_str)
-			return (-1);
+			return (FALSE);
 		if (ft_strncmp(argv[i], number_str, 11) != 0)
-			return (0);
+			return (FALSE);
 		i++;
 		free(number_str);
 	}
@@ -80,11 +78,11 @@ int	just_int(int argc, char **argv)
 int	error_check(int argc, char **argv)
 {
 	if (just_digits(argc, argv) == FALSE)
-		return (-3);
+		return (-1);
 	if (no_doublicates(argc, argv) == FALSE)
 		return (-2);
 	if (just_int(argc, argv) == FALSE)
-		return (-4);
+		return (-3);
 	return (0);
 }
 
@@ -116,34 +114,3 @@ int	init_struct(int argc, char **argv, t_list *content)
 	content->moves = 0;
 	return (0);
 }
-/*old functions for string input argc 2*/
-// int	ft_count_numbers(char *argv[])
-// {
-// 	int	i;
-// 	int	numbers;
-// 	i = 0;
-// 	numbers = 0;
-// 	while (argv[1][i])
-// 	{
-// 		if (argv[1][i] == ' ')
-// 			i++;
-// 		if (ft_isdigit(argv[1][i]) == 1)
-// 		{
-// 			numbers++;
-// 			while (ft_isdigit(argv[1][i]) == 1)
-// 				i++;
-// 		}
-// 	}
-// 	return (numbers);
-// }
-
-// int	ft_det_amt(int argc, char *argv[])
-// {
-// 	char **arguments;
-// 	if (argc > 2)
-// 		return (argc -1);
-// 	else
-// 	{
-// 		return (ft_count_numbers(argv));
-// 	}
-// }
