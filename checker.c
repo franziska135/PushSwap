@@ -41,6 +41,14 @@ int	ft_operations(t_list *content, char *str)
 	return (1);
 }
 
+void	ft_free(t_list *content)
+{
+	if (content->stack[0])
+		free(content->stack[0]);
+	if (content->stack[1])
+		free(content->stack[1]);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list		content;
@@ -56,7 +64,7 @@ int	main(int argc, char *argv[])
 	while (str)
 	{
 		if (ft_operations(&content, str) == 0)
-			return (free(str), -1);
+			return (ft_free(&content), free(str), -1);
 		free(str);
 		str = get_next_line(STDIN_FILENO);
 	}

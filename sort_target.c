@@ -87,23 +87,23 @@ int	is_number(char c)
 
 void	write_op(t_list *content, int operation, int stack)
 {
-	if ((operation == RA || operation == UP) && stack == A)
-		write(1, "ra\n", 3);
-	else if ((operation == RRA || operation == DOWN) && stack == A)
-		write(1, "rra\n", 4);
-	else if ((operation == RB || operation == UP) && stack == B)
-		write(1, "rb\n", 3);
-	else if ((operation == RRB || operation == DOWN) && stack == B)
-		write(1, "rrb\n", 4);
-	else if (operation == RR && stack == 2)
-		write (1, "rr\n", 3);
-	else if (operation == RRR && stack == 2)
-		write (1, "rrr\n", 4);
-	else if (operation == PB)
-		write (1, "pb\n", 3);
-	else if (operation == PA)
-		write (1, "pa\n", 3);
-	else if (operation == SA)
-		write (1, "sa\n", 3);
+	// if ((operation == RA || operation == UP) && stack == A)
+	// 	write(1, "ra\n", 3);
+	// else if ((operation == RRA || operation == DOWN) && stack == A)
+	// 	write(1, "rra\n", 4);
+	// else if ((operation == RB || operation == UP) && stack == B)
+	// 	write(1, "rb\n", 3);
+	// else if ((operation == RRB || operation == DOWN) && stack == B)
+	// 	write(1, "rrb\n", 4);
+	// else if (operation == RR && stack == 2)
+	// 	write (1, "rr\n", 3);
+	// else if (operation == RRR && stack == 2)
+	// 	write (1, "rrr\n", 4);
+	// else if (operation == PB)
+	// 	write (1, "pb\n", 3);
+	// else if (operation == PA)
+	// 	write (1, "pa\n", 3);
+	// else if (operation == SA)
+	// 	write (1, "sa\n", 3);
 	content->moves++;
 }
