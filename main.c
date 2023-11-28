@@ -49,11 +49,13 @@ int	main(int argc, char *argv[])
 		return (write(2, "ERROR\n", 6), -1);
 	if (init_struct(argc, argv, &content) == -1)
 		return (write(2, "ERROR\n", 6), -1);
-	print_list(content);
-	printf("-\t-\n%d\t%d\n\n", content.size[A], content.size[B]);
+	// print_list(content);
+	// printf("-\t-\n%d\t%d\n\n", content.size[A], content.size[B]);
 	sort(&content);
-	print_list(content);
-	printf("-\t-\n%d\t%d\n", content.size[A], content.size[B]);
+	// printf("\n");
+	// print_list(content);
+	// printf("-\t-\n%d\t%d\n", content.size[A], content.size[B]);
+	// printf("moves: %d\n", content.moves);
 	(free(content.stack[0]), free(content.stack[1]));
 	return (0);
 }
