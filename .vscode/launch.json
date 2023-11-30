@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // with the help from
+            // https://medium.com/@willemdejonge/use-visual-studio-code-with-an-autotools-based-c-c-project-22d90118cd22
+            "name": "debug push_swap",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/push_swap",
+            "args": [
+                "6",
+                "1",
+                "9",
+                "4",
+                "8",
+                "7"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+        },
+        {
+            // with the help from
+            // https://medium.com/@willemdejonge/use-visual-studio-code-with-an-autotools-based-c-c-project-22d90118cd22
+            "name": "make debug push_swap",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/push_swap",
+            "args": [
+                "6",
+                "1",
+                "9",
+                "4",
+                "8",
+                "7"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "make"
+        }
+
+    ]
+}
