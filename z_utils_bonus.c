@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_arithmetic.c                                  :+:      :+:    :+:   */
+/*   sort_small_helper.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmarggra <fmarggra@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:36:15 by fmarggra          #+#    #+#             */
-/*   Updated: 2023/10/30 16:36:17 by fmarggra         ###   ########.fr       */
+/*   Created: 2023/11/20 11:14:35 by fmarggra          #+#    #+#             */
+/*   Updated: 2023/11/20 11:14:36 by fmarggra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	ft_atoi(const char *str)
+/*checks if stack is in order, return 0 if no, 1 if yes*/
+int	in_order(t_list *content, int stack, int scope)
 {
-	int			i;
-	long int	nbr;
-	int			sign;
+	int	i;
 
 	i = 0;
-	nbr = 0;
-	sign = 1;
-	if (*str == '\0')
-		return (0);
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (i < content->size[stack] - 1)
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		if (content->stack[stack][i] < content->stack[stack][i + 1])
+			i++;
+		else
+			return (FALSE);
 	}
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	if (scope == FULL)
 	{
-		nbr = nbr * 10 + str[i] - '0';
-		i++;
+		if (content->size[A] != content->total)
+			return (FALSE);
 	}
-	if (nbr * sign > 2147483647 || nbr * sign < -2147483648)
-		return_exit(1);
-	return (nbr * sign);
+	return (TRUE);
 }
 
 int	ft_strncmp(char *s1, const char *s2, size_t n)
@@ -69,40 +61,41 @@ int	ft_strncmp(char *s1, const char *s2, size_t n)
 		return (0);
 }
 
-int	ft_length(long int n)
+int	is_number(char c)
 {
-	int	i;
-
-	i = 1;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		n *= -1;
-		i++;
-	}
-	while (n / 10 > 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
+	if (c >= '0' && c <= '9')
+		return (TRUE);
+	else
+		return (FALSE);
 }
 
-char	*ft_write_str(char *converted, int length, long int number, int n)
+int	ft_atoi(const char *str)
 {
-	converted[length] = '\0';
-	while (length > 0)
+	int			i;
+	long int	nbr;
+	int			sign;
+
+	i = 0;
+	nbr = 0;
+	sign = 1;
+	if (*str == '\0')
+		return (0);
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		converted[length - 1] = number % 10 + '0';
-		number = number / 10;
-		length--;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	if (n < 0)
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
-		converted[0] = '-';
+		nbr = nbr * 10 + str[i] - '0';
+		i++;
 	}
-	return (converted);
+	if (nbr * sign > 2147483647 || nbr * sign < -2147483648)
+		return_exit(1);
+	return (nbr * sign);
 }
 
 char	*ft_itoa(int n)

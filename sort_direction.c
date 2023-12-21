@@ -40,8 +40,9 @@ void	ft_find_direction(t_list *content)
 void	calculate_direction(t_list *content, int index_a, int index_b)
 {
 	int	down;
+	int	up;
 
-
+	up = compare(index_a, index_b, BIGGEST);
 	down = content->size[A] - index_a;
 	down = compare(down, content->size[B] - index_b, BIGGEST);
 	if (index_a <= index_b)

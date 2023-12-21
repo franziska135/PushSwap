@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	just_digits(int argc, char **argv)
 {
@@ -21,7 +21,7 @@ int	just_digits(int argc, char **argv)
 	j = -1;
 	while (i < argc)
 	{
-		if (ft_strlen(argv[i]) == 0)
+		if (ft_strlen_new(argv[i]) == 0)
 			return (FALSE);
 		while (argv[i][++j])
 		{
@@ -29,10 +29,10 @@ int	just_digits(int argc, char **argv)
 					&& argv[i][0] != '+')
 				return (FALSE);
 			else if ((argv[i][0] == '-' && is_number(argv[i][1] == FALSE))
-					|| (argv[i][0] == '-' && ft_strlen(argv[i]) < 2))
+					|| (argv[i][0] == '-' && ft_strlen_new(argv[i]) < 2))
 				return (FALSE);
 			else if ((argv[i][0] == '+' && is_number(argv[i][1] == FALSE))
-					|| (argv[i][0] == '+' && ft_strlen(argv[i]) < 2))
+					|| (argv[i][0] == '+' && ft_strlen_new(argv[i]) < 2))
 				return (FALSE);
 		}
 		j = -1;
@@ -101,9 +101,6 @@ int	init_struct(int argc, char **argv, t_list *content)
 	content->size[B] = 0;
 	content->direction[A] = 0;
 	content->direction[B] = 0;
-	content->index_cheapest = 0;
-	content->target = 0;
-	content->cost = 0;
 	content->stack[A] = (int *)malloc(sizeof(int) * argc - 1);
 	if (!content->stack[A])
 		return (-1);
@@ -117,6 +114,5 @@ int	init_struct(int argc, char **argv, t_list *content)
 		i++;
 	}
 	content->total = content->size[A];
-	content->moves = 0;
 	return (0);
 }

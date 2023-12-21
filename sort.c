@@ -32,6 +32,9 @@ void	sort(t_list *content)
 
 void	ft_sort_three(t_list *content, int stack)
 {
+	int	i;
+
+	i = 0;
 	if (content->stack[stack][0] > content->stack[stack][1] &&
 		content->stack[stack][0] > content->stack[stack][2])
 		(ft_rotate(content, stack, UP), write_op(content, UP, A));
@@ -72,26 +75,15 @@ void	custom_sort(t_list *content)
 {
 	int	value_target;
 	int	target_index;
-	// int i = 0;
 
 	while (content->size[B] < 2)
 		(ft_push(content, A), write_op(content, PB, A));
-	// while (i < 1)
 	while (content->size[A] > 3 && (in_order_confused(content, A) == FALSE))
 	{
 		find_cheapest(content);
 		calculate_direction(content, content->index_cheapest, content->target);
-		// if (i == 0)
-		// {
-			
-		// 	printf("cheapest\t index: %d\tvalue: %d\n", content->index_cheapest, content->stack[A][content->index_cheapest]);
-		// 	printf("target\t\t index: %d\tvalue: %d\n", content->target, content->stack[B][content->target]);
-		// 	printf("dir_A\t%d\n", content->direction[A]);
-		// 	printf("dir_B\t%d\n\n", content->direction[B]);
-		// }
 		ft_rotate_manager(content);
-			(ft_push(content, A), write_op(content, PB, NONE));
-		// i++;
+		(ft_push(content, A), write_op(content, PB, NONE));
 	}
 	if (content->size[A] == 3)
 		ft_sort_three(content, A);

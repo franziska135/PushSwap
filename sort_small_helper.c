@@ -115,22 +115,3 @@ int	compare(int one, int two, int comparison)
 	else
 		return (-1);
 }
-
-// void	print_list(t_list content)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < content.size[A] || i < content.size[B])
-// 	{
-// 		if (i < content.size[A])
-// 			printf("%d\t", content.stack[A][i]);
-// 		else
-// 			printf("0\t");
-// 		if (i < content.size[B])
-// 			printf("%d\n", content.stack[B][i]);
-// 		else
-// 			printf("0\n");
-// 		i++;
-// 	}
-// }

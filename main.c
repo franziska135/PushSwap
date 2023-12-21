@@ -12,31 +12,22 @@
 
 #include "push_swap.h"
 
-void	print_list(t_list content)
+void	ft_free(t_list *content)
 {
-	int	i;
-
-	i = 0;
-	while (i < content.size[A] || i < content.size[B])
+	if (content)
 	{
-		if (i < content.size[A])
-			printf("%d\t", content.stack[A][i]);
-		else
-			printf("0\t");
-		if (i < content.size[B])
-			printf("%d\n", content.stack[B][i]);
-		else
-			printf("0\n");
-		i++;
+		if (content->stack[0])
+			(free(content->stack[0]), content->stack[0] = NULL);
+		if (content->stack[1])
+			(free(content->stack[1]), content->stack[1] = NULL);
+		content = NULL;
 	}
 }
 
-void	ft_free(t_list *content)
+void	return_exit(int status)
 {
-	if (content->stack[0])
-		free(content->stack[0]);
-	if (content->stack[1])
-		free(content->stack[1]);
+	write (2, "Error\n", 6);
+	exit(status);
 }
 
 int	main(int argc, char *argv[])
@@ -46,16 +37,10 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (0);
 	if (error_check(argc, argv) < 0)
-		return (write(2, "ERROR\n", 6), -1);
+		return (write(2, "Error\n", 6), -1);
 	if (init_struct(argc, argv, &content) == -1)
-		return (write(2, "ERROR\n", 6), -1);
-	// print_list(content);
-	// printf("-\t-\n%d\t%d\n\n", content.size[A], content.size[B]);
+		return (write(2, "Error\n", 6), -1);
 	sort(&content);
-	// printf("\n");
-	// print_list(content);
-	// printf("-\t-\n%d\t%d\n", content.size[A], content.size[B]);
-	// printf("moves: %d\n", content.moves);
 	(free(content.stack[0]), free(content.stack[1]));
 	return (0);
 }
